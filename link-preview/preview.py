@@ -14,11 +14,11 @@ def get_title(soup):
     # Open graph protocol
     og_title = soup.find("meta", property="og:title")
     if og_title:
-        return og_title.get('content')
+        return og_title.get("content")
     # Twitter card
-    twitter_title = soup.find("meta", name="twitter:title")
+    twitter_title = soup.find("meta", attrs={"name": "twitter:title"})
     if twitter_title:
-        return twitter_title.get('content')
+        return twitter_title.get("content")
     # Title of the webpage
     page_title = soup.title
     if page_title:
@@ -39,18 +39,31 @@ def get_description(soup):
     # Open graph protocol
     og_description = soup.find("meta", property="og:description")
     if og_description:
-        return og_description.get('content')
+        return og_description.get("content")
     # Twitter card
-    twitter_description = soup.find("meta", name="twitter:description")
+    twitter_description = soup.find("meta", attrs={"name": "twitter:description"})
     if twitter_description:
-        return twitter_description.get('content')
+        return twitter_description.get("content")
     # Description of the webpage
-    page_description = soup.find("meta", name="description")
+    page_description = soup.find("meta", attrs={"name": "description"})
     if page_description:
-        return page_description.get('content')
+        return page_description.get("content")
     # Check for p tags
     p_tag = soup.find("p")
     if p_tag:
         return p_tag.string
+
+    return None
+
+
+def get_domain(soup):
+    # From <link rel="canonical">
+    link = soup.find("link", attrs={"rel": "canonical"})
+    if link:
+        return link.get("href")
+    # From og:url
+    og_url = soup.find("meta", property="og:url")
+    if og_url:
+        return og_url.get("content")
 
     return None

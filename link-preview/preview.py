@@ -9,15 +9,16 @@ def get_soup(url):
     soup = BeautifulSoup(source.content, "html.parser")
     return soup
 
+
 def get_title(soup):
     # Open graph protocol
     og_title = soup.find("meta", property="og:title")
     if og_title:
         return og_title.get('content')
     # Twitter card
-    twitter_card = soup.find("meta", property="twitter:title")
-    if twitter_card:
-        return twitter_card.get('content')
+    twitter_title = soup.find("meta", name="twitter:title")
+    if twitter_title:
+        return twitter_title.get('content')
     # Title of the webpage
     page_title = soup.title
     if page_title:
@@ -30,5 +31,26 @@ def get_title(soup):
     h2_title = soup.find("h2")
     if h2_title:
         return h2_title.string
+
+    return None
+
+
+def get_description(soup):
+    # Open graph protocol
+    og_description = soup.find("meta", property="og:description")
+    if og_description:
+        return og_description.get('content')
+    # Twitter card
+    twitter_description = soup.find("meta", name="twitter:description")
+    if twitter_description:
+        return twitter_description.get('content')
+    # Description of the webpage
+    page_description = soup.find("meta", name="description")
+    if page_description:
+        return page_description.get('content')
+    # Check for p tags
+    p_tag = soup.find("p")
+    if p_tag:
+        return p_tag.string
 
     return None

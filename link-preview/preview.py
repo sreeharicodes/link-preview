@@ -1,5 +1,6 @@
 import requests
 from bs4 import BeautifulSoup
+from .helper_utils import is_image_accessible
 
 
 def get_soup(url):
@@ -65,5 +66,34 @@ def get_domain(soup):
     og_url = soup.find("meta", property="og:url")
     if og_url:
         return og_url.get("content")
+
+    return None
+
+
+def get_image(soup):
+    # Open graph
+    og_image = soup.find("meta", property="og:image")
+    if og_image:
+        link = og_image.get("content")
+        if link and is_image_accessible(link):
+            return link
+    # Twitter image
+    twitter_image = soup.find("meta", attrs={"name": "twitter:image"})
+    if twitter_image:
+        link = twitter_image.get("content")
+        if link and is_image_accessible(link):
+            return link
+    # <link rel="image_src">
+    image_link = soup.find("link", attrs={"rel": "image_src"})
+    if image_link:
+        link = image_link.get("href")
+        if link and is_image_accessible(link):
+            return link
+    # Check for img element with src
+    image_tag = soup.find("img", src=True)
+    if image_tag:
+        link = image_link.get("src")
+        if link and is_image_accessible(link):
+            return link
 
     return None

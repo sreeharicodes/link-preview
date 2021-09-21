@@ -1,6 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
-from .helper_utils import is_image_accessible
+from helper_utils import is_image_accessible
+from urllib.parse import  urlparse
 
 
 def get_soup(url):
@@ -61,12 +62,15 @@ def get_domain(soup):
     # From <link rel="canonical">
     link = soup.find("link", attrs={"rel": "canonical"})
     if link:
-        return link.get("href")
+        url = link.get("href")
+        if url:
+            return urlparse(url).netloc
     # From og:url
     og_url = soup.find("meta", property="og:url")
     if og_url:
-        return og_url.get("content")
-
+        url = og_url.get("content")
+        if url:
+            return urlparse(url).netloc
     return None
 
 

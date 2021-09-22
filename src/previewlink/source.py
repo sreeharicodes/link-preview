@@ -16,8 +16,11 @@ class PageSource:
         self.max_size = max_size
     
     def get_soup(self):
-        request = requests.get(self.url)
-        request.raise_for_status()
+        try:
+            request = requests.get(self.url)
+            request.raise_for_status()
+        except requests.HTTPError:
+            return BeautifulSoup()
 
         content_type = request.headers.get("Content-Type")
         if not content_type:

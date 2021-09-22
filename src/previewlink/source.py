@@ -137,7 +137,7 @@ class PreviewLink:
         # Check for img element with src
         image_tag = self.soup.find("img", src=True)
         if image_tag:
-            link = image_link.get("src")
+            link = image_tag.get("src")
             if link and is_image_accessible(link):
                 return link
 

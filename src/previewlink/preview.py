@@ -1,4 +1,4 @@
-from source import (
+from .source import (
     PageSource,
     PreviewLink
 )

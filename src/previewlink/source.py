@@ -1,9 +1,9 @@
 import requests
 from bs4 import BeautifulSoup
-from helper_utils import is_image_accessible
 from urllib.parse import  urlparse
+from .helper_utils import is_image_accessible
 
-from exceptions import (
+from .exceptions import (
     InvalidContentError,
     InvalidMimeTypeError,
     MaximumContentSizeError

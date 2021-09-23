@@ -1,6 +1,6 @@
 import requests
 from bs4 import BeautifulSoup
-from urllib.parse import  urlparse
+from urllib.parse import urlparse
 from .helper_utils import is_image_accessible
 
 from .exceptions import (
@@ -14,7 +14,7 @@ class PageSource:
     def __init__(self, url, max_size=1048576):
         self.url = url
         self.max_size = max_size
-    
+
     def get_soup(self):
         try:
             request = requests.get(self.url)
@@ -25,7 +25,7 @@ class PageSource:
         content_type = request.headers.get("Content-Type")
         if not content_type:
             raise InvalidContentError("Invalid content type")
-        
+
         mimetype = content_type.split(";")[0].lower()
         if mimetype != "text/html":
             raise InvalidMimeTypeError("Invalid mime type")

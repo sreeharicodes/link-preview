@@ -2,7 +2,6 @@
 
 You may have seen a preview of a link with a title, image, domain, and description when you share a link on social media.
 This preview has a significant impact on the user's decision to click on or not click on that link.
-
 previewlink will help you to get the preview of a link.
 
 ## How it works?
@@ -15,6 +14,7 @@ previewlink looks for the following tags in the page source
 ## Installation
 
 Run the following to install
+
 ```python
 pip install previewlink
 ```

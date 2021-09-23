@@ -1,6 +1,9 @@
 # Preview Link
 
 You may have seen a preview of a link with a title, image, domain, and description when you share a link on social media.
+
+![alt text](https://github.com/sreehari1997/link-preview/blob/master/preview.png?raw=true)
+
 This preview has a significant impact on the user's decision to click on or not click on that link.
 previewlink will help you to get the preview of a link.
 

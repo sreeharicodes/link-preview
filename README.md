@@ -7,6 +7,8 @@ You may have seen a preview of a link with a title, image, domain, and descripti
 This preview has a significant impact on the user's decision to click on or not click on that link.
 previewlink will help you to get the preview of a link.
 
+[PyPI](https://pypi.org/project/previewlink/)
+
 ## How it works?
 
 previewlink looks for the following tags in the page source

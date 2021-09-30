@@ -6,6 +6,8 @@
     https://app.travis-ci.com/sreehari1997/link-preview
 )
 
+[![Coverage Status](https://coveralls.io/repos/github/sreehari1997/link-preview/badge.svg?branch=HEAD)](https://coveralls.io/github/sreehari1997/link-preview?branch=HEAD)
+
 You may have seen a preview of a link with a title, image, domain, and description when you share a link on social media.
 
 ![alt text](https://github.com/sreehari1997/link-preview/blob/master/preview.png?raw=true)

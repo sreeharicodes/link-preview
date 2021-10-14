@@ -10,6 +10,11 @@
 )](
     https://coveralls.io/github/sreehari1997/link-preview?branch=HEAD
 )
+[![Downloads](
+    https://pepy.tech/badge/previewlink
+)](
+    https://pepy.tech/project/previewlink
+)
 
 You may have seen a preview of a link with a title, image, domain, and description when you share a link on social media.
 
